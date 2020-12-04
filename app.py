@@ -18,13 +18,22 @@ class Todo(db.Model):
     content = db.Column(db.String(200), nullable=False)
     vanity = db.Column(db.String(200), nullable=False)
 
-
     def __repr__(self):
         return '<Task %r>' % self.id
 
+class Email(db.Model):
+    email = db.Column(db.String(200), primary_key=True)
+    vanity = db.Column(db.String(200), nullable=False)
+
+    def __repr__(self):
+        return '<Email %r>' % self.email
+
+@app.route('/')
+def index():
+    return render_template('index.html')
 
 @app.route('/<string:vanity>', methods=['POST', 'GET'])
-def index(vanity):
+def display(vanity):
     if request.method == 'POST':
         task_content = request.form['content']
         new_task = Todo(content=task_content, vanity=vanity)
@@ -38,7 +47,7 @@ def index(vanity):
 
     else:
         tasks = Todo.query.filter_by(vanity=vanity).all()
-        return render_template('index.html', vanity=vanity, tasks=tasks)
+        return render_template('showlist.html', vanity=vanity, tasks=tasks)
 
 @app.route('/delete/<int:id>/<string:vanity>')
 def delete(id, vanity):

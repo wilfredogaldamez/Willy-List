@@ -1,0 +1,20 @@
+.button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 30px 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 26px;
+  margin: 4px 6px;
+  cursor: pointer;
+}
+
+#bodyDiv {
+  margin: auto;
+  margin-top: 10%;
+  width: 50%;
+  /*border: 3px solid green;*/
+  padding: 10px;
+}

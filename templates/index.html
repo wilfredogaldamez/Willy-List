@@ -1,33 +1,14 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>What ya doing today? </title>
+<title>Willy List - Your Go-To List Website</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
 {% endblock %}
 
 {% block body %}
-<div class="content">
-    <h1 style="text-align: center">What ya doing today?</h1>
-    <table>
-        <tr>
-            <th>Task</th>
-            <th>Actions</th>
-        </tr>
-        {% for task in tasks %}
-            <tr>
-                <td>{{ task.content }}</td>
-                <td>
-                    <a href="/delete/{{task.id}}/{{vanity}}">Delete</a>
-                    <br>
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
-
-    <div class="form">
-        <form action="/{{vanity}}" method="POST">
-            <input autofocus type="text" name="content" id="content">
-            <input type="submit" value="Add Task">
-        </form>
-    </div>
+<div id="bodyDiv">
+  <a href="#" class="button">Quick List (just for today)</a>
+  <a href="#" class="button">Willy List (Forever)</a>
 </div>
+
 {% endblock %}
