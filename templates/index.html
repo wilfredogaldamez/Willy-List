@@ -7,8 +7,14 @@
 
 {% block body %}
 <div id="bodyDiv">
-  <a href="#" class="button">Quick List (just for today)</a>
-  <a href="#" class="button">Willy List (Forever)</a>
+  <div class="form">
+
+      <a href="#" class="button">Quick List (just for today)</a>
+      <form action="anotherpage.html" method="POST">
+          <input type="submit" value="Willy List (Forever)" class="formButton"><br>
+          <input type="textarea" placeholder="youremail@example.com" Required="True">
+      </form>
+  </div>
 </div>
 
 {% endblock %}
