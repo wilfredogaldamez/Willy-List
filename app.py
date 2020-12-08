@@ -34,6 +34,7 @@ def index():
 
 @app.route('/generateWithoutEmail')
 def generateQuickList():
+    db.create_all()
     redirectString = get_random_alphanumeric_string(8)
     return redirect(redirectString)
 
