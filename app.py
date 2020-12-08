@@ -32,6 +32,24 @@ class Email(db.Model):
 def index():
     return render_template('index.html')
 
+@app.route('/generateWithoutEmail')
+def generateQuickList():
+    redirectString = get_random_alphanumeric_string(8)
+    return redirect(redirectString)
+
+@app.route('/generateWithEmail', methods=['POST'])
+def generateWillyList():
+    email_content = request.form['emailtest']
+    vanity = get_random_alphanumeric_string(8)
+    new_email = Email(email=email_content, vanity=vanity)
+    try:
+        db.session.add(new_email)
+        db.session.commit()
+        redirectString = '/' + vanity
+        return redirect(redirectString)
+    except:
+        return 'There was an issue with your email address'
+
 @app.route('/<string:vanity>', methods=['POST', 'GET'])
 def display(vanity):
     if request.method == 'POST':
@@ -60,7 +78,6 @@ def delete(id, vanity):
         return redirect(redirectString)
     except:
         return 'There was a problem deleting that task'
-
 
 if __name__ == "__main__":
     app.run(debug=True)
