@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Willy List - Your Go-To List Website</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block body %}
+<div id="bodyDiv">
+    <div class="form">
+        <p>Please enter your email address to retrieve your domain. </p>
+        <form action="/generateWithEmail" method="POST">
+            <input type="textarea" placeholder="youremail@example.com" Required="True" name="emailtest">
+            <input type="submit" value="Retrieve"><br>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -38,6 +38,10 @@ def generateQuickList():
     redirectString = get_random_alphanumeric_string(8)
     return redirect(redirectString)
 
+@app.route('/forgotPassword')
+def forgotPassword():
+    return render_template('forgot.html')
+
 @app.route('/generateWithEmail', methods=['POST'])
 def generateWillyList():
     email_content = request.form['emailtest']
