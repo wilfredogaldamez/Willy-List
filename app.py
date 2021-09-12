@@ -38,9 +38,18 @@ def generateQuickList():
     redirectString = get_random_alphanumeric_string(8)
     return redirect(redirectString)
 
-@app.route('/forgotPassword')
+@app.route('/forgotPassword', methods=['POST', 'GET'])
 def forgotPassword():
-    return render_template('forgot.html')
+    if request.method == 'POST':
+        email = request.form['content']
+        try: 
+            EmailObject = Email.query.filter_by(email=email).first()
+            return render_template('forgot.html', email=email, EmailObject=EmailObject)
+        except: 'There was an issue with your email address'
+
+    else:
+        return render_template('forgot.html')
+
 
 @app.route('/generateWithEmail', methods=['POST'])
 def generateWillyList():
@@ -54,6 +63,8 @@ def generateWillyList():
         return redirect(redirectString)
     except:
         return 'There was an issue with your email address'
+
+
 
 @app.route('/<string:vanity>', methods=['POST', 'GET'])
 def display(vanity):

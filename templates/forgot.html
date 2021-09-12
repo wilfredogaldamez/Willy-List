@@ -8,12 +8,15 @@
 {% block body %}
 <div id="bodyDiv">
     <div class="form">
-        <p>Please enter your email address to retrieve your domain. </p>
-        <form action="/generateWithEmail" method="POST">
-            <input type="textarea" placeholder="youremail@example.com" Required="True" name="emailtest">
+        <p>Please enter your email address to retrieve your WillyList. </p>
+        <form action="/forgotPassword" method="POST">
+            <input type="textarea" placeholder="youremail@example.com" Required="True" name="content">
             <input type="submit" value="Retrieve"><br>
         </form>
     </div>
+    {% if EmailObject is defined %}
+    <p>Your WillyList url is <br> <a href="{{ EmailObject.vanity }}">{{ EmailObject.vanity }}</a></p>
+    {% endif %}
 </div>
 
 {% endblock %}
