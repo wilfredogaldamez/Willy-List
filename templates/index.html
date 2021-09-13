@@ -1,20 +1,62 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>Willy List - Your Go-To List Website</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WillyList</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 {% endblock %}
 
 {% block body %}
-<div id="bodyDiv">
-  <div class="form">
-    <a href="/generateWithoutEmail" class="button">Quick List (just for today)</a>
-    <form action="/generateWithEmail" method="POST">
-      <input type="submit" value="Willy List (Forever)" class="formButton"><br>
-      <input type="textarea" placeholder="youremail@example.com" Required="True" name="emailtest">
-    </form>
-    <a href="/forgotPassword">Forgot WillyList?</a>
+
+<section class="hero is-info">
+  <div class="hero-body">
+    <p class="title">
+      Willy List
+    </p>
+    <p class="subtitle">
+      For the fast-paced professional
+    </p>
   </div>
-</div>
+</section>
+<br>
+<section>
+  <div class="container">
+    <div class="tile is-ancestor">
+      <div class="tile is-horizontal">
+        <div class="tile is-parent">
+          <article class="tile is-child box notification is-warning">
+            <p class="title">QuickList</p>
+            <p class="subtitle">Just for today</p>
+            <div class="content">
+              <a href="/generateWithoutEmail" class="button">Create!</a>
+            </div>
+          </article>
+        </div>
+        <div class="tile is-parent is-info">
+          <article class="tile is-child box notification is-warning">
+            <p class="title">WillyList</p>
+            <p class="subtitle">(Bookmark and Save Forever)</p>
+            <div class="content">
+              <div class="form">
+                <form action="/generateWithEmail" method="POST">
+                  <input type="textarea" placeholder="your@email.com" Required="True" name="emailtest">
+                  <input type="submit" value="Go!" class="formButton"><br>
+                </form>
+                <a href="/forgotPassword">Forgot?</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
 
 {% endblock %}
